@@ -1,0 +1,9 @@
+yarn add eslint -D
+yarn eslint --init
+
+depois de configurar na minha preferencia usar o proprio npm para instalar as dependencias no final da configuração depois excluir o package-lock caso esteja usando o yarn e executar o yarn para adicionar no yarn.lock
+
+no settings.json
+"editor.codeActionsOnSave": {
+        "source.fixAll": true
+    }
