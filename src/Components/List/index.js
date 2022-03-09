@@ -1,30 +1,25 @@
-/* eslint-disable react/no-array-index-key */
-import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
-import Tmdb from '../Tmdb';
-import { ListStyle, MovieRow } from './styles';
+import {
+  ListStyle, MovieRow, MovieRowList, MovieRowItem, TitleMovie,
+} from './styles';
 
-export default function List() {
-  const [movieList, setMovieList] = useState([]);
-  const urlImage = 'https://image.tmdb.org/t/p/w300';
-  useEffect(() => {
-    (async () => {
-      const list = await Tmdb.getHomeList();
-      setMovieList(list);
-    })();
-  }, []);
-
+export default function List({ urlImage, children }) {
   return (
     <>
-      {movieList.map((item, key) => (
-        <ListStyle key={key}>
+      {children.map((item) => (
+        <ListStyle key={Math.random()}>
 
-          <h2>{item.title}</h2>
+          <TitleMovie>{item.title}</TitleMovie>
 
           <MovieRow>
-            {item.items.results.length > 0 && item.items.results.map((itemList) => (
-              <img src={`${urlImage}${itemList.poster_path}`} key={Math.random()} alt={itemList.original_title} />
-            ))}
+            <MovieRowList>
+              {item.items.results.length > 0 && item.items.results.map((itemList) => (
+                <MovieRowItem key={Math.random()}>
+                  <img src={`${urlImage}${itemList.poster_path}`} alt={itemList.original_title} />
+                </MovieRowItem>
+              ))}
+            </MovieRowList>
           </MovieRow>
 
         </ListStyle>
@@ -32,3 +27,9 @@ export default function List() {
     </>
   );
 }
+
+List.propTypes = {
+  urlImage: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  children: PropTypes.array.isRequired,
+};
