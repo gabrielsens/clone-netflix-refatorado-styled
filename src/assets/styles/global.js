@@ -5,8 +5,8 @@ export default createGlobalStyle`
       box-sizing: border-box;
     }
     body {
-      background-color: #111;
-      color: #fff;
+      background-color: ${({ theme }) => theme.colors.background};
+      color: ${({ theme }) => theme.colors.color};
       margin: 0;
       font-family: 'Roboto', 'sans-serif'
     }
