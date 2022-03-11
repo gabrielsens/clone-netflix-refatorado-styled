@@ -26,6 +26,7 @@ export const HorizontalGradient = styled.div`
   .titleMovie {
     font-size: 60px;
     font-weight: bold;
+    max-width: 40%;
   }
 `;
 
@@ -82,6 +83,7 @@ export const InfoButtons = styled.div`
     margin-right: 10px;
     opacity: 1;
     transition: all ease 0.2s;
+    white-space: nowrap;
 
     &:hover{
       opacity: 0.7;

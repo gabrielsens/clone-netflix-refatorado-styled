@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 
 import Tmdb from '../../Components/Tmdb';
+import Header from '../../Components/Header';
 
 import { Lists } from './style';
 import List from '../../Components/List';
 import Destaque from '../../Components/Destaque';
+import { Footer } from '../../Components/Footer';
 
 export default function Home() {
   const [destaque, setDestaque] = useState(null);
@@ -26,13 +28,20 @@ export default function Home() {
 
   return (
     <>
-      {destaque
-        && <Destaque filmeDestaque={destaque} />}
+      <Header />
+      {destaque && <Destaque filmeDestaque={destaque} />}
       <Lists>
         <List urlImage={urlImage}>
           {movieList}
         </List>
       </Lists>
+      <Footer>
+        Desenvolvido por
+        {' '}
+        <strong>Gabriel Sens</strong>
+        {' '}
+        de acordo com material da B7Web.
+      </Footer>
     </>
   );
 }

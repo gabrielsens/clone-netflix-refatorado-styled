@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
 export const ListStyle = styled.div`
-
+  &:hover {
+    .iconList {
+      opacity: 1;
+    }
+  }
 `;
 
 export const MovieRow = styled.div`
@@ -10,7 +14,6 @@ export const MovieRow = styled.div`
 `;
 
 export const MovieRowList = styled.div`
-  width: 9999999px;
 `;
 
 export const MovieRowItem = styled.div`
@@ -31,4 +34,20 @@ export const MovieRowItem = styled.div`
 
 export const TitleMovie = styled.h2`
   margin: 0px 0px 0px 30px;
+`;
+
+export const IconMovieList = styled.div`
+  position: absolute;
+  width: 40px;
+  height: 225px;
+  background-color: rgba(0,0,0, 0.6);
+  left: ${({ position }) => (position === 'left' ? 0 : '')};
+  right: ${({ position }) => (position === 'right' ? 0 : '')};
+  z-index: 9;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: all ease .2s;
 `;

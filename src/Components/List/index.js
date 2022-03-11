@@ -1,7 +1,10 @@
+/* eslint-disable react/jsx-no-bind */
+
 import PropTypes from 'prop-types';
+import ListRow from '../ListRow';
 
 import {
-  ListStyle, MovieRow, MovieRowList, MovieRowItem, TitleMovie,
+  ListStyle, TitleMovie,
 } from './styles';
 
 export default function List({ urlImage, children }) {
@@ -11,17 +14,7 @@ export default function List({ urlImage, children }) {
         <ListStyle key={Math.random()}>
 
           <TitleMovie>{item.title}</TitleMovie>
-
-          <MovieRow>
-            <MovieRowList>
-              {item.items.results.length > 0 && item.items.results.map((itemList) => (
-                <MovieRowItem key={Math.random()}>
-                  <img src={`${urlImage}${itemList.poster_path}`} alt={itemList.original_title} />
-                </MovieRowItem>
-              ))}
-            </MovieRowList>
-          </MovieRow>
-
+          <ListRow item={item} urlImage={urlImage} />
         </ListStyle>
       ))}
     </>
